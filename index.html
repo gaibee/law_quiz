@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-90S1LET98V"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-90S1LET98V');
+        </script>
+
+        <!-- bootstrap css -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+
+        <!-- font -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800&display=swap&subset=korean"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="./css/style.css" />
+
+        <title>의료법 감염병 퀴즈</title>
+        <meta name="description" content="의료법 감염병 테스트" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </head>
+    <body>
+        <!-- 네비게이션 바 -->
+        <nav
+            class="navbar navbar-expand-lg navbar-light bg-light titlebar"
+            style="background-color: #3f51b5 !important;"
+        >
+            <a class="navbar-brand text-white" href="#"
+                ><i class="fa fa-user-md fa-md mr-2"></i>의료법 감염병 테스트</a
+            >
+        </nav>
+
+        <div class="container mb-3">
+            <h4 class="text-center text-muted p-4">의료법 감염병 종류 퀴즈<br /></h4>
+            <div class="row justify-content-center mb-2">
+                <div class="custom-control custom-checkbox mr-2">
+                    <input type="checkbox" class="custom-control-input" id="chk1" checked="true" />
+                    <label class="custom-control-label" for="chk1">제1급</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-2">
+                    <input type="checkbox" class="custom-control-input" id="chk2" checked="true" />
+                    <label class="custom-control-label" for="chk2">제2급</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-2">
+                    <input type="checkbox" class="custom-control-input" id="chk3" checked="true" />
+                    <label class="custom-control-label" for="chk3">제3급</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-2">
+                    <input type="checkbox" class="custom-control-input" id="chk4" checked="true" />
+                    <label class="custom-control-label" for="chk4">제4급</label>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="card col-10 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">다음 병의 감염병 종류는?</h5>
+                        <hr />
+                        <div class="d-flex align-items-center" style="height: 200px;">
+                            <h3 id="txt-question" class="card-text text-center text-bold p-4 w-100">
+                                콜레라
+                            </h3>
+                        </div>
+
+                        <hr />
+                        <div class="row justify-content-center pr-2 pl-2">
+                            <button
+                                type="button"
+                                id="btn-next"
+                                class="card-link btn btn-primary btn-lg w-100"
+                            >
+                                답보기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="txt-answer" class="text-center">
+                정답
+            </h4>
+
+            <div class="row justify-content-center">
+                <div class="card col-10 mb-3">
+                    <div class="card-body">
+                        <h5 class="text-muted text-center mb-3">
+                            감염병 보기
+                        </h5>
+                        <div id="list-group" class="list-group list-group-horizontal mb-4">
+                            <button
+                                type="button"
+                                class="list-group-item list-group-item-action active"
+                            >
+                                1
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action">
+                                2
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action">
+                                3
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action">
+                                4
+                            </button>
+                        </div>
+                        <p id="txt-infect-all" class="card-text">
+                            감염병 종류
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var infect1 = [
+                '에볼라바이러스병',
+                '마버그열',
+                '라싸열',
+                '크리미안콩고출혈열',
+                '남아메리카출혈열',
+                '리프트밸리열',
+                '두창',
+                '페스트',
+                '탄저',
+                '보툴리눔 독소증',
+                '야토병',
+                '신종감염병증후군',
+                '중증급성호읍기증후군(SARS)',
+                '중동호흡기증후군(MERS)',
+                '동물인플루엔자',
+                '신종인플루엔자',
+                '디프테리아',
+            ];
+            var infect2 = [
+                '결핵',
+                '수두',
+                '홍역',
+                '콜레라',
+                '장티푸스',
+                '파라티푸스',
+                '세균성이질',
+                '장출혈성대장균감염증',
+                'A형간염',
+                '백일',
+                '유행성이하선염',
+                '풍진파. 폴리오',
+                '수막구균 감염증',
+                'b형헤모필루스인플루엔자',
+                '폐렴구균 감염증',
+                '한센병',
+                '성홍열',
+                '반코마이신내성황색포도알균 (VRSA) 감염증',
+                '카바페넴내성장내세균속 균종(CRE) 감염증',
+            ];
+            var infect3 = [
+                '파상풍',
+                'B형간염',
+                '일본뇌염',
+                'C형간염',
+                '말라리아',
+                '레지오넬라증',
+                '비브리오패혈증',
+                '발진티푸스',
+                '발진열',
+                '쯔쯔가무시증',
+                '렙토스피라증',
+                '브루셀라증',
+                '공수병',
+                '신증후군출혈열',
+                '후천성면역결핍증(AIDS)',
+                '크로이츠펠트-야콥(CJD) 및 변종크로이츠펠트-야콥병 (vCJD)',
+                '황열',
+                '뎅기열',
+                '큐열',
+                '웨스트나일열',
+                '라임병',
+                '진드기매개뇌염',
+                '유비저',
+                '치쿤구니야열',
+                '중증열성혈소판감소 증후군(SFTS)',
+                '지카바이러스 감염증',
+            ];
+
+            var infect4 = [
+                '인플루엔자',
+                '매독(梅毒)',
+                '회충증',
+                '편충증',
+                '요충증',
+                '간흡충증',
+                '폐흡충증',
+                '장흡충증',
+                '수족구병',
+                '임질',
+                '클라미디아감염증',
+                '연성하감',
+                '성기단순포진',
+                '첨규콘딜롬',
+                '반코마이신내성장알균(VRE) 감염증',
+                '메티실린내성황색포도알균(MRSA) 감염증',
+                '다제내성녹농균(MRPA) 감염증',
+                '다제내성아시네토박터바우마니균 (MRAB) 감염증',
+                '장관감염증',
+                '급성호흡기감염증',
+                '해외유입기생충감염증',
+                '엔테로바이러스감염증',
+                '사람유두종바이러스 감염증',
+            ];
+
+            var infect = [infect1, infect2, infect3, infect4];
+            var infect_selected  = [1,1,1,1]
+            var infect_all = [infect1, infect2, infect3, infect4];
+            var answer = 0;
+
+            // 체크박스 선택 해제 이벤트 연결
+            $('#chk1, #chk2, #chk3, #chk4').change(function () {
+                if ($(this).prop('id') == 'chk1') {
+                    if ($(this).prop('checked') == false) {
+                        infect_selected[0] = 0
+                    } else {
+                        infect_selected[0] = 1
+                    }
+                } else if ($(this).prop('id') == 'chk2') {
+                    if ($(this).prop('checked') == false) {
+                        infect_selected[1] = 0
+                    } else {
+                        infect_selected[1] = 1
+                    }
+                } else if ($(this).prop('id') == 'chk3') {
+                    if ($(this).prop('checked') == false) {
+                        infect_selected[2] = 0
+                    } else {
+                        infect_selected[2] = 1
+                    }
+                } else if ($(this).prop('id') == 'chk4') {
+                    if ($(this).prop('checked') == false) {
+                        infect_selected[3] = 0
+                    } else {
+                        infect_selected[3] = 1
+                    }
+                }
+            });
+
+            function getRndInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function next_question() {
+                if (infect_selected.reduce((a, b) => a + b)==0) {
+                    alert('최소 1개 이상 감염병을 선택하세요');
+                    return;
+                }
+                
+                var ind1 = 0
+                while(true) {
+                    ind1 = getRndInt(0, infect.length - 1);
+                    if(infect_selected[ind1]==1){
+                        break;
+                    }
+                }
+
+                var infect_chosen = infect[ind1];
+
+                var ind2 = getRndInt(0, infect_chosen.length - 1);
+                var infect_chosen_name = infect_chosen[ind2];
+
+                answer = ind1;
+                $('#txt-question').text(infect[ind1][ind2]);
+                $('#txt-answer').text('정답');
+
+                return [ind1, infect_chosen_name];
+            }
+
+            function get_answer() {
+                $('#txt-answer').text('제 ' + (answer + 1).toString() + '급 감염병');
+            }
+
+            $('#btn-next').click(function () {
+                if ($(this).text() == '다음 문제') {
+                    next_question();
+                    $(this).text('답보기');
+                } else {
+                    get_answer();
+                    $(this).text('다음 문제');
+                }
+            });
+
+            function show_infect_all(index) {
+                $('#txt-infect-all').html(infect_all[index].join('<br>'));
+            }
+
+            // 감염병 보기 연결
+            $('#list-group > .list-group-item-action').click(function () {
+                $('#list-group > .list-group-item-action').removeClass('active');
+                $(this).addClass('active');
+                show_infect_all($(this).index());
+            });
+
+            next_question();
+        </script>
+
+        <!-- bootstrap script -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+    </body>
+</html>
