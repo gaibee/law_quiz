@@ -103,6 +103,19 @@
                 정답
             </h4>
 
+            <ins
+                class="kakao_ad_area"
+                style="display: none;"
+                data-ad-unit="DAN-of1DGfR5jDKcuL7y"
+                data-ad-width="320"
+                data-ad-height="50"
+            ></ins>
+            <script
+                type="text/javascript"
+                src="//t1.daumcdn.net/kas/static/ba.min.js"
+                async
+            ></script>
+
             <div class="row justify-content-center">
                 <div class="card col-10 mb-3">
                     <div class="card-body">
@@ -231,7 +244,7 @@
             ];
 
             var infect = [infect1, infect2, infect3, infect4];
-            var infect_selected  = [1,1,1,1]
+            var infect_selected = [1, 1, 1, 1];
             var infect_all = [infect1, infect2, infect3, infect4];
             var answer = 0;
 
@@ -239,27 +252,27 @@
             $('#chk1, #chk2, #chk3, #chk4').change(function () {
                 if ($(this).prop('id') == 'chk1') {
                     if ($(this).prop('checked') == false) {
-                        infect_selected[0] = 0
+                        infect_selected[0] = 0;
                     } else {
-                        infect_selected[0] = 1
+                        infect_selected[0] = 1;
                     }
                 } else if ($(this).prop('id') == 'chk2') {
                     if ($(this).prop('checked') == false) {
-                        infect_selected[1] = 0
+                        infect_selected[1] = 0;
                     } else {
-                        infect_selected[1] = 1
+                        infect_selected[1] = 1;
                     }
                 } else if ($(this).prop('id') == 'chk3') {
                     if ($(this).prop('checked') == false) {
-                        infect_selected[2] = 0
+                        infect_selected[2] = 0;
                     } else {
-                        infect_selected[2] = 1
+                        infect_selected[2] = 1;
                     }
                 } else if ($(this).prop('id') == 'chk4') {
                     if ($(this).prop('checked') == false) {
-                        infect_selected[3] = 0
+                        infect_selected[3] = 0;
                     } else {
-                        infect_selected[3] = 1
+                        infect_selected[3] = 1;
                     }
                 }
             });
@@ -269,15 +282,15 @@
             }
 
             function next_question() {
-                if (infect_selected.reduce((a, b) => a + b)==0) {
+                if (infect_selected.reduce((a, b) => a + b) == 0) {
                     alert('최소 1개 이상 감염병을 선택하세요');
                     return;
                 }
-                
-                var ind1 = 0
-                while(true) {
+
+                var ind1 = 0;
+                while (true) {
                     ind1 = getRndInt(0, infect.length - 1);
-                    if(infect_selected[ind1]==1){
+                    if (infect_selected[ind1] == 1) {
                         break;
                     }
                 }
